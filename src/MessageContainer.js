@@ -32,6 +32,14 @@ export default class MessageContainer extends React.PureComponent {
     }
   }
 
+  componentDidMount() {
+    setTimeout(() => {
+      if (this.flatListRef) {
+        this.flatListRef.scrollToEnd();
+      }
+    }, 300);
+  }
+
   componentWillReceiveProps(nextProps) {
     if (this.props.messages.length === 0 && nextProps.messages.length > 0) {
       this.detatchKeyboardListeners();
@@ -77,9 +85,9 @@ export default class MessageContainer extends React.PureComponent {
     return null;
   }
 
-  scrollTo(options) {
+  scrollTo() {
     if (this.flatListRef) {
-      this.flatListRef.scrollToOffset(options);
+      setTimeout(() => this.flatListRef.scrollToEnd(), 0);
     }
   }
 
@@ -163,7 +171,7 @@ MessageContainer.defaultProps = {
   user: {},
   renderFooter: null,
   renderMessage: null,
-  onLoadEarlier: () => {},
+  onLoadEarlier: () => { },
   inverted: true,
   loadEarlier: false,
   listViewProps: {},

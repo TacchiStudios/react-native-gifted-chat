@@ -285,6 +285,7 @@ class GiftedChat extends React.Component {
       this.onKeyboardWillShow(e);
     }
     this.setIsTypingDisabled(false);
+    this.scrollToBottom();
   }
 
   onKeyboardDidHide(e) {
